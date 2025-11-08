@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: portfolio_postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - portfolio_network
+
+volumes:
+  postgres_data:
+
+networks:
+  portfolio_network:
+    driver: bridge

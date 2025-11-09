@@ -24,7 +24,6 @@ services:
       - key: NODE_ENV
         value: production
 
-    startCommand: npm run start
 
 databases:
   - name: portifolio-db

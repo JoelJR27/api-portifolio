@@ -5,8 +5,7 @@ import routes from "../routes/index.js";
 
 const app: Application = express();
 
-app.use();
-app.options("*", cors());
+app.options(/(.*)/, cors());
 
 routes(app);
 

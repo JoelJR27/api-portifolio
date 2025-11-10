@@ -22,6 +22,7 @@ export default class UserController {
             const auth = authenticatedUser as AuthenticatedUser;
 
             res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None; Secure` });
+            res.cookie("token", auth.token, { domain: "localhost", maxAge: 2 * 60 * 60 * 1000, httpOnly: true, sameSite: "none", secure: true });
             res.status(200).send({
                 status: "success",
                 message: "Usuário autenticado com sucesso.",
@@ -54,7 +55,7 @@ export default class UserController {
         const { username, email } = user
 
         const token = jwt.sign({ username, email }, SECRET_KEY, { expiresIn: "2h" })
-        
+
         return token
     }
 

@@ -21,7 +21,7 @@ export default class UserController {
 
             const auth = authenticatedUser as AuthenticatedUser;
 
-            res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None` });
+            res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None; Secure` });
             res.status(200).send({
                 status: "success",
                 message: "Usuário autenticado com sucesso.",

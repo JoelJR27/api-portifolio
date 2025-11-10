@@ -20,7 +20,7 @@ export default class UserController {
             if (authenticatedUser instanceof Error) throw authenticatedUser
 
             const auth = authenticatedUser as AuthenticatedUser;
-                
+
             const isProduction = process.env.NODE_ENV === "production";
 
             res.cookie("token", auth.token, {
@@ -34,6 +34,7 @@ export default class UserController {
             res.status(200).send({
                 status: "success",
                 message: "Usuário autenticado com sucesso.",
+                token: auth.token,
                 user: auth.username
             });
         } catch (error) {

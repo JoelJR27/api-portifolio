@@ -3,9 +3,9 @@ import ExperiencesController from "../controllers/ExperiencesController.js";
 
 const router: Router = Router()
 
-router.get("/experiences", ExperiencesController.getAll);
-router.post("/experiences", ExperiencesController.create);
-router.put("/experiences/:id", ExperiencesController.update);
-router.delete("/experiences/:id", ExperiencesController.delete);
+router.get("/", ExperiencesController.getAll);
+router.post("/", ExperiencesController.create);
+router.put("/:id", ExperiencesController.update);
+router.delete("/:id", ExperiencesController.delete);
 
 export default router

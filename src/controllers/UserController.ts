@@ -20,8 +20,7 @@ export default class UserController {
             if (authenticatedUser instanceof Error) throw authenticatedUser
 
             const auth = authenticatedUser as AuthenticatedUser;
-
-            // res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None; Secure` });
+                
             const isProduction = process.env.NODE_ENV === "production";
 
             res.cookie("token", auth.token, {
@@ -31,7 +30,7 @@ export default class UserController {
                 maxAge: 2 * 60 * 60 * 1000,
                 path: "/",
             });
-                            
+
             res.status(200).send({
                 status: "success",
                 message: "Usuário autenticado com sucesso.",

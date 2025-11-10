@@ -43,7 +43,7 @@
     "typescript": "^5.9.3"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "node dist/prisma/seed.js"
   },
   "packageManager": "pnpm@10.15.0"
 }

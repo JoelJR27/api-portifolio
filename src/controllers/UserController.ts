@@ -21,8 +21,17 @@ export default class UserController {
 
             const auth = authenticatedUser as AuthenticatedUser;
 
-            res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None; Secure` });
-            res.cookie("token", auth.token, { domain: "localhost", maxAge: 2 * 60 * 60 * 1000, httpOnly: true, sameSite: "none", secure: true });
+            // res.header({ "Set-Cookie": `token=${auth.token}; HttpOnly; Path=/; SameSite=None; Secure` });
+            const isProduction = process.env.NODE_ENV === "production";
+
+            res.cookie("token", auth.token, {
+                httpOnly: true,
+                secure: isProduction,
+                sameSite: isProduction ? "none" : "lax",
+                maxAge: 2 * 60 * 60 * 1000,
+                path: "/",
+            });
+                            
             res.status(200).send({
                 status: "success",
                 message: "Usuário autenticado com sucesso.",

@@ -1,8 +1,17 @@
-import express, { type Application, type Request, type Response } from "express";
+import cors from "cors";
+import express, { type Application } from "express";
 import errorHandler from "../middlewares/errorHandler.js";
 import routes from "../routes/index.js";
+import cookieParser from "cookie-parser";
 
 const app: Application = express();
+
+app.use(cookieParser(), cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}),)
 
 routes(app);
 

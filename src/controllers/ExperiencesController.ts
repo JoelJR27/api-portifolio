@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import ExperiencesService from "../services/ExperiencesService.js";
-import type { Experiences } from "../../generated/prisma/index.js";
+import type { Experiences } from "@prisma/client";
 
 export default class ExperiencesController {
     

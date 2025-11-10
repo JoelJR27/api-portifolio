@@ -1,5 +1,5 @@
-import type { Project } from "../../generated/prisma/index.js";
 import prisma from "../database.js";
+import type { Project } from "@prisma/client";
 import AppError from "../errors/AppError.js";
 import type { ProjectPostData } from "../types/index.js";
 import { handlePrismaError } from "../utils/handlePrismaError.js";

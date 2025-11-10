@@ -1,5 +1,5 @@
-import type { Experiences } from "../../generated/prisma/index.js";
 import prisma from "../database.js";
+import type { Experiences } from "@prisma/client";
 import { handlePrismaError } from "../utils/handlePrismaError.js";
 
 

@@ -1,4 +1,4 @@
-import { Prisma } from "../../generated/prisma/index.js";
+import { Prisma } from "@prisma/client";
 import AppError from "../errors/AppError.js";
 import type { NextFunction, Request, Response } from "express";
 

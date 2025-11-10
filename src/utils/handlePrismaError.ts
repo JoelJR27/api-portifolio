@@ -1,4 +1,4 @@
-import { Prisma } from "../../generated/prisma/index.js";
+import { Prisma } from "@prisma/client";
 import AppError from "../errors/AppError.js";
 
 /**
@@ -6,7 +6,7 @@ import AppError from "../errors/AppError.js";
  * @param error O erro lançado pelo Prisma.
  * @throws {AppError} Erro da aplicação com mensagem e código de status apropriados.
  */
-export function handlePrismaError(error: unknown): void {
+export function handlePrismaError(error: any): void {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
         switch (error.code) {
             case "P2002":

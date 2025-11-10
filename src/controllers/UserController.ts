@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import type { Request, Response, NextFunction } from "express";
-import type { User } from "../../generated/prisma/index.js";
+import type { User } from "@prisma/client";
 import UserServices from "../services/UserService.js";
 import AppError from "../errors/AppError.js";
 import type { AuthenticatedUser } from "../types/index.js";

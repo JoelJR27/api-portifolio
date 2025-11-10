@@ -2,8 +2,19 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
+  "homepage": "https://github.com/JoelJR27/api-portifolio#readme",
+  "bugs": {
+    "url": "https://github.com/JoelJR27/api-portifolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoelJR27/api-portifolio.git"
+  },
+  "license": "ISC",
+  "author": "joel-junior",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "tsx --watch ./server.ts",
     "build": "tsc",
@@ -11,13 +22,15 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
+  "dependencies": {
+    "@prisma/client": "6.17.1",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
   },
-  "keywords": [],
-  "author": "joel-junior",
-  "license": "ISC",
-  "packageManager": "pnpm@10.15.0",
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
@@ -29,13 +42,8 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
-  "dependencies": {
-    "@prisma/client": "6.17.1",
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2"
-  }
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "packageManager": "pnpm@10.15.0"
 }

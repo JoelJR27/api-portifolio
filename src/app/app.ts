@@ -11,6 +11,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:3001",
+      "https://portifolio-joel-junior.vercel.app/",
       // Adicionar produção aqui
     ],
     credentials: true,

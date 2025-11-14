@@ -52,7 +52,7 @@ model Experiences {
   id          String @id @default(uuid())
   title       String
   description String
-  startedAt   String
+  startedAt   String 
   finishedAt  String
 }
 

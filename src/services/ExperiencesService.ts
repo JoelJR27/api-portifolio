@@ -18,7 +18,7 @@ export default class ExperiencesService {
     static async getAll() {
         try {
             const experiences = await prisma.experiences.findMany({
-                orderBy: { startedAt: 'asc' }
+                orderBy: { startedAt: 'desc' }
             })
 
             return experiences

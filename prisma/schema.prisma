@@ -49,11 +49,11 @@ model User {
 }
 
 model Experiences {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String
   description String
-  startedAt   String 
-  finishedAt  String
+  startedAt   DateTime
+  finishedAt  DateTime
 }
 
 model ProjectTechnology {

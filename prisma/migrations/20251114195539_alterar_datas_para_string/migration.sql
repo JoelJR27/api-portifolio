@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Experiences" ALTER COLUMN "startedAt" SET DATA TYPE TEXT,
+ALTER COLUMN "finishedAt" SET DATA TYPE TEXT;

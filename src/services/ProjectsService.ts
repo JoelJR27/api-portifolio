@@ -60,7 +60,7 @@ export default class ProjectService {
                         image: true,
                         technologies: {
                             include: {
-                                technology: true
+                                technology: { include: { logo: true } }
                             }
                         }
                     }

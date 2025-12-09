@@ -1,5 +1,5 @@
 import prisma from "../database.js";
-import type { Project } from "@prisma/client";
+import type { Image, Project } from "@prisma/client";
 import AppError from "../errors/AppError.js";
 import type { ProjectPostData } from "../types/index.js";
 import { handlePrismaError } from "../utils/handlePrismaError.js";
@@ -95,13 +95,25 @@ export default class ProjectService {
         }
     }
 
-    static async updateProject(slug: string, data: Partial<Project>) {
+    static async updateProject(slug: string, data: Project & { image: Image }) {
         try {
             await prisma.project.update({
                 where: {
                     slug
                 },
-                data
+                data: {
+                    projectName: data.projectName,
+                    slug: data.slug,
+                    description: data.description,
+                    projectLink: data.projectLink,
+                    githubLink: data.githubLink,
+                    image: {
+                        update: {
+                            name: data.image.name,
+                            imageLink: data.image.imageLink,
+                        }
+                    }
+                }
             })
         } catch (error) {
             handlePrismaError(error)

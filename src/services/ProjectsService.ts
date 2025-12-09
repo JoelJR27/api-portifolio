@@ -80,7 +80,11 @@ export default class ProjectService {
                 },
                 include: {
                     image: true,
-                    technologies: true
+                    technologies: {
+                        include: {
+                            technology: { include: { logo: true } }
+                        }
+                    }
                 }
             })
             if (!project) throw new AppError("Projeto não encontrado.", 404)

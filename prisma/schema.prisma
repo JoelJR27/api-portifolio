@@ -19,7 +19,7 @@ model Project {
   slug         String              @unique
   description  String
   projectLink  String
-  githubLink   String
+  githubLink   String?
   image        Image?
   technologies ProjectTechnology[]
 }

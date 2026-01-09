@@ -40,4 +40,5 @@ export interface UpdateProject {
         name?: string;
         imageLink?: string;
     };
+    technologyIds: string[]
 }

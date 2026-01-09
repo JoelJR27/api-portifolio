@@ -135,10 +135,19 @@ export default class ProjectService {
                 };
             }
 
+            if (data.technologyIds) {
+                updateData.technologies = {
+                    set: data.technologyIds.map((id) => ({
+                        technologyId: id
+                    }))
+                };
+            }
+
             await prisma.project.update({
                 where: { slug },
                 data: updateData
             });
+
 
         } catch (error) {
             handlePrismaError(error);

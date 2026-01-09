@@ -29,3 +29,15 @@ export interface AuthenticatedUser {
     username: string,
     token: string
 }
+
+export interface UpdateProject {
+    projectName?: string;
+    slug?: string;
+    description?: string;
+    projectLink?: string;
+    githubLink?: string;
+    image?: {
+        name?: string;
+        imageLink?: string;
+    };
+}

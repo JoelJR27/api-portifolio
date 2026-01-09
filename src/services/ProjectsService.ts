@@ -1,7 +1,7 @@
 import prisma from "../database.js";
 import type { Image, Project } from "@prisma/client";
 import AppError from "../errors/AppError.js";
-import type { ProjectPostData } from "../types/index.js";
+import type { ProjectPostData, UpdateProject } from "../types/index.js";
 import { handlePrismaError } from "../utils/handlePrismaError.js";
 
 export default class ProjectService {
@@ -95,30 +95,54 @@ export default class ProjectService {
         }
     }
 
-    static async updateProject(slug: string, data: Project & { image: Image }) {
+    static async updateProject(
+        slug: string,
+        data: UpdateProject
+    ) {
         try {
-            await prisma.project.update({
-                where: {
-                    slug
-                },
-                data: {
-                    projectName: data.projectName,
-                    slug: data.slug,
-                    description: data.description,
-                    projectLink: data.projectLink,
-                    githubLink: data.githubLink,
-                    image: {
-                        update: {
-                            name: data.image.name,
-                            imageLink: data.image.imageLink,
-                        }
-                    }
-                }
-            })
-        } catch (error) {
-            handlePrismaError(error)
-        }
+            const updateData: any = {};
 
+            if (data.projectName !== undefined) {
+                updateData.projectName = data.projectName;
+            }
+
+            if (data.slug !== undefined) {
+                updateData.slug = data.slug;
+            }
+
+            if (data.description !== undefined) {
+                updateData.description = data.description;
+            }
+
+            if (data.projectLink !== undefined) {
+                updateData.projectLink = data.projectLink;
+            }
+
+            if (data.githubLink !== undefined) {
+                updateData.githubLink = data.githubLink;
+            }
+
+            if (data.image) {
+                updateData.image = {
+                    update: {
+                        ...(data.image.name !== undefined && {
+                            name: data.image.name
+                        }),
+                        ...(data.image.imageLink !== undefined && {
+                            imageLink: data.image.imageLink
+                        })
+                    }
+                };
+            }
+
+            await prisma.project.update({
+                where: { slug },
+                data: updateData
+            });
+
+        } catch (error) {
+            handlePrismaError(error);
+        }
     }
 
     static async deleteProject(slug: string) {

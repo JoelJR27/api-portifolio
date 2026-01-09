@@ -6,7 +6,7 @@ const router: Router = Router()
 router.get("/", ProjectsController.getAll)
 router.get("/:slug", ProjectsController.getBySlug)
 router.post("/", ProjectsController.create)
-router.put("/:slug", ProjectsController.update)
+router.patch("/:slug", ProjectsController.update)
 router.delete("/:slug", ProjectsController.delete)
 
 export default router

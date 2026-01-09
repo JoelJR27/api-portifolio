@@ -137,9 +137,12 @@ export default class ProjectService {
 
             if (data.technologyIds) {
                 updateData.technologies = {
-                    set: data.technologyIds.map((id) => ({
-                        technologyId: id
-                    }))
+                    deleteMany: {},
+                    createMany: {
+                        data: data.technologyIds.map((id) => ({
+                            technologyId: id
+                        }))
+                    }
                 };
             }
 
@@ -148,11 +151,11 @@ export default class ProjectService {
                 data: updateData
             });
 
-
         } catch (error) {
             handlePrismaError(error);
         }
     }
+
 
     static async deleteProject(slug: string) {
         try {
